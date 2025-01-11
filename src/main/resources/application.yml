@@ -1,0 +1,26 @@
+server:
+  netty:
+    connection-timeout: 5000
+    idle-timeout: 30s
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/json,text/event-stream,application/javascript,text/css,text/html
+
+  http2:
+    enabled: true
+
+netty:
+  worker-count: 0
+
+
+spring:
+  main:
+    web-application-type: reactive
+  threads:
+    virtual:
+      enabled: true
+logging:
+  level:
+    io.netty: DEBUG
+    reactor: DEBUG
