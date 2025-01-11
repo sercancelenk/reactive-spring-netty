@@ -94,4 +94,5 @@ public class NettyConfig {
 } 
 ```
 ### Resources
+- https://java.msk.ru/experience-in-webflux-netty-highload-optimization/
 - https://dzone.com/articles/thousands-of-socket-connections-in-java-practical
