@@ -1,4 +1,4 @@
-package com.example.reactivespring;
+package com.example.reactivespring.controller;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;

@@ -47,7 +47,7 @@ function selectedScenarios() {
 }
 
 export default function () {
-    const response = http.get('http://localhost:8080/cold-numbers', {
+    const response = http.get('http://localhost:30080/cold-numbers', {
         headers: {
             'Accept': 'text/event-stream',
         }

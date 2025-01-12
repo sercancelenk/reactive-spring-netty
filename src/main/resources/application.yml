@@ -13,7 +13,6 @@ server:
 netty:
   worker-count: 0
 
-
 spring:
   main:
     web-application-type: reactive
@@ -22,5 +21,6 @@ spring:
       enabled: true
 logging:
   level:
-    io.netty: DEBUG
-    reactor: DEBUG
+    root: INFO
+    io.netty: ERROR
+    reactor: ERROR

@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reactive-spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reactive-spring
+  template:
+    metadata:
+      labels:
+        app: reactive-spring
+    spec:
+      containers:
+        - name: reactive-spring
+          image: localhost:5000/reactive-spring:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "4Gi"
+              cpu: "4"
+            limits:
+              memory: "8Gi"
+              cpu: "8"
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: >-
+                -XX:+UseG1GC
+                -XX:MaxGCPauseMillis=100
+                -XX:+UseStringDeduplication
+                -Dio.netty.allocator.type=pooled
+                -Dio.netty.leakDetection.level=disabled
+                -Dio.netty.net.somaxconn.trySysctl=true
+                -Dkern.ipc.somaxconn=2048 
